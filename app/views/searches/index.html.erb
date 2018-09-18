@@ -1,0 +1,8 @@
+<section>
+  <h2>Trending Searches</h2>
+  <ul>
+    <% @trending.each do |search| %>
+      <li><%= search.term %></li>
+    <% end %>
+  </ul>
+</section>
