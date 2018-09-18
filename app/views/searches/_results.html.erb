@@ -1,0 +1,31 @@
+<% if @search.results.nil? %>
+  <p>Sorry, search results are unavailable at this time</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Brewery Name</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% if @search.results.none? %>
+      <tr>
+        <td colspan="4">No results match this query</td>
+      </tr>
+    <% else %>
+      <% @search.results.each do |brewery| %>
+        <tr>
+          <td><%= brewery.name %></td>
+          <td><%= brewery.brewery_type %></td>
+          <td><%= brewery.city %>, <%= brewery.state %></td>
+          <td><%= link_to brewery.website_url %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

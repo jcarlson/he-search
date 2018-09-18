@@ -1,7 +1,7 @@
 require 'open_brewery'
 
 class Brewery
-  include ActiveModel::Serializers::JSON
+  include ActiveModel::Model
 
   attr_accessor :id,
                 :name,
@@ -22,6 +22,8 @@ class Brewery
       api = OpenBrewery.new
       results = api.search(query)
       results.map { |attributes| new(attributes) }
+    rescue OpenBrewery::ApiError
+      nil
     end
   end
 

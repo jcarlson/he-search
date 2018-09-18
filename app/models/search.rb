@@ -18,4 +18,8 @@ class Search < ApplicationRecord
   def count
     read_attribute(:count) || occurrences.count
   end
+
+  def results
+    @results ||= Brewery.search(term)
+  end
 end
