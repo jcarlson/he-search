@@ -1,5 +1,5 @@
 <section>
-  <h2>Search</h2>
+  <h2>Start New Search</h2>
   <%= form_for @search, url: search_index_path do |f| %>
     <%= f.text_field :term %>
     <%= f.submit 'Search' %>
@@ -8,9 +8,23 @@
 
 <section>
   <h2>Trending Searches</h2>
-  <ul>
+  <table>
+    <thead>
+    <tr>
+      <th>Term</th>
+      <th>Occurrences</th>
+      <th>Last Searched</th>
+    </tr>
+    </thead>
+
+    <tbody>
     <% @trending.each do |search| %>
-      <li><%= link_to search.term, search_path(search.term) %></li>
+      <tr>
+        <td><%= link_to search.term, search_path(search.term) %></td>
+        <td><%= search.count %></td>
+        <td><%= search.created_at %></td>
+      </tr>
     <% end %>
-  </ul>
+    </tbody>
+  </table>
 </section>
