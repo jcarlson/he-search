@@ -13,7 +13,9 @@ class Search < ApplicationRecord
   # and augment each partition with `count` as a virtual attribute
   scope :trending, -> { distinct.select(WITH_COUNTS).order('count DESC, created_at DESC') }
 
-  def occurrences
-    read_attribute(:count) || self.class.where(term: term).count
+  has_many :occurrences, class_name: 'Search', primary_key: :term, foreign_key: :term
+
+  def count
+    read_attribute(:count) || occurrences.count
   end
 end

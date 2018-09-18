@@ -1,0 +1,13 @@
+<section>
+  <h2>Results for <%= @search.term %></h2>
+  <p><em>...coming soon</em></p>
+</section>
+
+<section>
+  <h2>Search Occurrences</h2>
+  <ul>
+    <% @search.occurrences.each do |occurrence| %>
+      <li><%= occurrence.term %> - <%= occurrence.created_at %></li>
+    <% end %>
+  </ul>
+</section>
