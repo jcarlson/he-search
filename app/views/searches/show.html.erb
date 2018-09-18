@@ -1,12 +1,11 @@
 <section>
-  <h2>Search Results for:</h2>
-  <h3>"<%= @search.term %>"</h3>
+  <h2>Breweries Matching "<%= @search.term %>"</h2>
 
   <%= render partial: 'results' %>
 </section>
 
 <section>
-  <h2>Search History</h2>
+  <h2>Past Searches for "<%= @search.term %>"</h2>
   <ul>
     <% @search.occurrences.each do |occurrence| %>
       <li><%= occurrence.created_at %></li>
