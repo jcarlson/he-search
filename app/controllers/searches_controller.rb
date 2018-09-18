@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
+  before_action :build_new_search
+
   def index
-    @search = Search.new
     @trending = trending
   end
 
@@ -14,6 +15,10 @@ class SearchesController < ApplicationController
   end
 
   private
+
+  def build_new_search
+    @new_search = Search.new
+  end
 
   def trending
     scope = Search.trending

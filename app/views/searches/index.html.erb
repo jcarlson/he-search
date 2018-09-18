@@ -1,10 +1,4 @@
-<section>
-  <h2>Start New Search</h2>
-  <%= form_for @search, url: search_index_path do |f| %>
-    <%= f.text_field :term %>
-    <%= f.submit 'Search' %>
-  <% end %>
-</section>
+<%= render @new_search %>
 
 <section>
   <h2>Trending Searches</h2>
